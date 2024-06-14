@@ -4,84 +4,91 @@ import styled from "styled-components";
 
 export const CardContainer = styled.section`
    display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center; 
-   object-position: center; 
    background-color: #ffffff;
-   gap: 0;
-   width: 391px;
-   height: 360px;
-   top: 173px;
-   left: 540px;
-   box-shadow: #000000;
-   border-radius: 0.3rem;
+   width: 525px;   
+   height: 412px;
+   top: 149px;
+   left: 487px;
+   border-radius: 5px;
+   padding: 16px;
+   gap: 24px;
 
    image{
-      width: 309px;
-      height: 254px;
-      top: 173px;
-      left: 564px;
-      gap: 0px;
-      opacity: 0px;  
-      justify-content: center;
-      align-items: center; 
+      width: 493px;
+      height: 194px;
+      border-radius: 4px;       
    }
 
    @media (max-width: 768px) {
-    width: 50%;     
+    width: 30%;     
   }
 `;
 
 export const CardRegistrationContainer = styled.section`
-   display: flex;  
-   justify-content: center;
-   align-items: center;    
-   gap: 0;
+   display: flex; 
+   background-color: #000000; 
    width: 391px;   
    height: 360px;
    top: 173px;
-   left: 540px;   
+   left: 540px;
+   border-radius: 5px;
+   padding: 16px;
+   gap: 24px;
 
    image{
-      display: flex;
       width: 309px;
       height: 254px;
-      top: 173px;
-      left: 564px;
-      gap: 0px;
-      opacity: 0px;  
-      justify-content: center;
-      align-items: center;
+      border-radius: 4px; 
    }
 
    @media (max-width: 768px) {
-    width: 50%;     
+    width: 30%;     
   }
 `;
 
-export const CardBody = styled.article`
-   display: grid;
-   align-items: center;
-   object-position: center;
-   gap: 1rem;
-   justify-content: center;
-   align-items: center;  
+export const CardTextRegister = styled.article`
+   width: 493px;
+   height: 96px;
 
    h1{
-      margin-bottom: 1rem;
+      text-align: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
       line-height: 38.4px;
       color: #ffffff;      
    }
 
    p{ 
+      text-align: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      font-size: 21px;
+      font-size: 23px;
       font-weight: 500;
       line-height: 27.6px;
       color: #ffffff;
+   }
+`;
+
+export const CardText = styled.article`  
+   width: 493px;
+   height: 96px;
+
+   h1{
+      text-align: center;
+      margin-bottom: 1rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 32px;
+      color: #000000;      
+   }
+
+   p{ 
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      color: #000000;
    }
 `;

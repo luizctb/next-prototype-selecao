@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image';
-import { CardBody, CardRegistrationContainer } from './CardLayout';
+import { CardRegistrationContainer, CardTextRegister } from './CardLayout';
 import { TextLimit } from '../TextLimit/TextLimit';
 
 
@@ -16,12 +16,12 @@ export function CardRegistration({information}: {information: CardInformation}) 
    return (
       <CardRegistrationContainer>         
          <div>
-            <Image src={information.image} alt="Imagem" width={500} height={500} />
-               <CardBody>
+            <Image src={information.image} alt="Imagem" width={309} height={254} />
+               <CardTextRegister>
                   <h1>{information.title}</h1>
                   <TextLimit text={information.text} limit={50}
                   /> 
-               </CardBody> 
+               </CardTextRegister> 
             </div>                             
       </CardRegistrationContainer>
    );  
