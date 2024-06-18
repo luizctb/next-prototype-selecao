@@ -27,6 +27,12 @@ export const information03 = [
    },
 
    {
+      title: "Endereço: Fazenda Andorinhas",
+      text: "Descrição básica do local e do projeto, para facilitar a identificação",
+      image: 'http://localhost:3000/images/fazenda01.png',     
+   },
+
+   {
       title: "Endereço: Fazenda do Norte",
       text: "Descrição básica do local e do projeto, para facilitar a identificação",
       image: 'http://localhost:3000/images/fazenda01.png',      

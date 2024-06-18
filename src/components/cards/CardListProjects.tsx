@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { CardContainer, CardText } from './CardLayout';
 import { TextLimit } from '../TextLimit/TextLimit';
+import { ButtonEnter } from '../buttons/ButtonsLayout';
 
 export interface CardInformation03 {
    image: string;
@@ -15,11 +16,13 @@ export function CardListProjects({information03}: {information03: CardInformatio
    return (
       <CardContainer>
          <div>
-            <Image src={information03.image} alt="Imagem" width={493} height={194} />
+            <Image src={information03.image} alt="Imagem" width={493} height={194} 
+            />
                <CardText>
                   <h1>{information03.title}</h1>
                   <TextLimit text={information03.text} limit={50}/>                    
-               </CardText>   
+               </CardText> 
+            <ButtonEnter>ENTRAR</ButtonEnter>    
          </div>
       </CardContainer>
    );  

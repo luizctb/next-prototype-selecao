@@ -2,35 +2,43 @@
 
 import Image from 'next/image'
 import { SearchIcon } from 'lucide-react';
-import { Nav, Button, InputNameProject, RightContainer, InputNameCompany, InputSpace } from './NavbarLayout';
+import { Nav, InputNameProject, InputNameCompany, InputSpace, TopRightItems, FixedNavbarSection, ContentContainer } from './NavbarLayout';
+import { ButtonRegister } from '../buttons/ButtonsLayout';
+import React from 'react';
 
+interface NavbarProps {
+  children: React.ReactNode;
+}
 
-export function Navbar() {
-
+export function Navbar({ children }: NavbarProps) {
   return (
-    <Nav>      
-      <Button>CADASTRAR NOVO PROJETO</Button>   
+    <Nav>   
+      <FixedNavbarSection>         
+        <TopRightItems>
+          <ButtonRegister>CADASTRAR NOVO PROJETO</ButtonRegister>   
 
-      <InputNameProject>
-        <input type="text" placeholder="Nome do projeto" />
-      </InputNameProject>
+          <InputNameProject>
+            <input type="text" placeholder="Nome do projeto" />
+          </InputNameProject>
 
-        <RightContainer>
-         <InputNameCompany className="search-company">
+          <InputNameCompany className="search-company">
             <input type="text" placeholder="Nome da Instituição/empresa" />
-         </InputNameCompany>
+          </InputNameCompany>
 
-         <InputSpace>            
-          <i>
-            <SearchIcon />  
-          </i>  
-          <input 
-            type="text" 
-            placeholder="BUSCAR" 
-          />  
-
-         </InputSpace>        
-      </RightContainer>
+          </TopRightItems>
+            <InputSpace>            
+              <i>
+                <SearchIcon />  
+              </i>  
+              <input 
+                type="text" 
+                placeholder="BUSCAR" 
+              />  
+            </InputSpace>
+          </FixedNavbarSection>       
+        <ContentContainer>             
+          {children}
+      </ContentContainer>
     </Nav>
   );
 }
