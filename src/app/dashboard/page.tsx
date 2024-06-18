@@ -18,7 +18,7 @@ function Dashboard() {
         return <SearchResult />;
       case 'searchResultList':
         return <SearchResultList />;
-      default:
+      default: 'searchService';
         return <SearchService />;
     }
   };

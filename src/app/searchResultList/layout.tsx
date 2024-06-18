@@ -6,13 +6,13 @@ export const PageContainer = styled.section`
    background-color: #000000CC; 
    width: 100%;
    height: 100%;
-   min-height: 100vh;
+   min-height: 100vh;   
 `;
 
 export const HomeBody = styled.section`
    display: grid;
-   grid-template-columns: repeat(2, 1rf);   
+   grid-template-columns: repeat(2, 1fr);
    grid-gap: 10px;
    margin: 0 auto;
-   width: 80%;   
+   width: 80%;     
 `;
