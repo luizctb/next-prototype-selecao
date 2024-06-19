@@ -7,7 +7,7 @@ import { information } from '../FakeDatas/FakeRegistration';
 import { PageContainer, HomeBody } from './layout';
 import { ButtonExit } from '@/components/buttons/ButtonsLayout';
 import Image from 'next/image';
-import { LogOut } from 'lucide-react';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 
 const SearchService: React.FC = () => {
@@ -26,7 +26,7 @@ const SearchService: React.FC = () => {
             <Link href="/dashboard?page=searchResult" passHref> 
               <i className='link-content'>
                 <div className='icon'>              
-                  <LogOut />
+                  <LogoutOutlinedIcon />
                 </div>
                 Sair do Sistema
               </i>

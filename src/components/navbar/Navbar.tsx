@@ -1,10 +1,11 @@
 "use client"
 
 import Image from 'next/image'
-import { SearchIcon } from 'lucide-react';
 import { Nav, InputNameProject, InputNameCompany, InputSpace, TopRightItems, FixedNavbarSection, ContentContainer } from './NavbarLayout';
 import { ButtonRegister } from '../buttons/ButtonsLayout';
 import React from 'react';
+import { SearchOutlined } from '@mui/icons-material';
+import Link from 'next/link';
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -26,14 +27,15 @@ export function Navbar({ children }: NavbarProps) {
           </InputNameCompany>
 
           </TopRightItems>
-            <InputSpace>            
-              <i>
-                <SearchIcon />  
-              </i>  
-              <input 
-                type="text" 
-                placeholder="BUSCAR" 
-              />  
+            <InputSpace>  
+              <Link href="/dashboard?page=searchResult" passHref>           
+              <i className='link-content'>
+                <div className='icon'>
+                  <SearchOutlined /> 
+                </div> 
+                BUSCAR
+              </i>                
+              </Link>  
             </InputSpace>
           </FixedNavbarSection>       
         <ContentContainer>             

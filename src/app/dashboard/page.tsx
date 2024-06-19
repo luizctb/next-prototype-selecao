@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import SearchService from "../search/page";
 import SearchResult from "../searchResult/page";
 import SearchResultList from "../searchResultList/page";
+import RegistrationProject from "../registrationProject/page";
 
 
 function Dashboard() {
@@ -20,6 +21,8 @@ function Dashboard() {
         return <SearchResultList />;
       default: 'searchService';
         return <SearchService />;
+      case 'registrationProject':
+        return <RegistrationProject />;      
     }
   };
 

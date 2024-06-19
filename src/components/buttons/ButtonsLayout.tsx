@@ -99,3 +99,35 @@ export const ButtonExit = styled.button`
     margin-bottom: 10px;
   }
 `;
+
+export const ButtonNext = styled.button`
+  width: 140px;
+  height: 42px;
+  top: 768px;
+  left: 1252px;  
+  border-radius: 3px;  
+  background-color: #F2CDA1;
+  color: #000000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 26px;  
+  letter-spacing: 0cap.46;
+  cursor: pointer;  
+  align-self: flex-end;
+  right: 10px;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  
+
+  :hover {
+    background-color: #e08214;
+    color: #595959;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; 
+    margin-bottom: 10px;
+  }
+`;

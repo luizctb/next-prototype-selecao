@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { information03 } from '../FakeDatas/FakeList';
 import { PageContainer, HomeBody } from './layout';
 import React from 'react';
+import { ButtonExit } from '@/components/buttons/ButtonsLayout';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const SearchResultList: React.FC = () => {
   return (
@@ -19,6 +21,16 @@ const SearchResultList: React.FC = () => {
             />
           ))}
         </HomeBody>
+        <ButtonExit>          
+            <Link href="/dashboard?page=searchService" passHref> 
+              <i className='link-content'>
+                <div className='icon'>              
+                  <LogoutOutlinedIcon />
+                </div>
+                Sair do Sistema
+              </i>
+            </Link>
+          </ButtonExit>    
         <div>        
           <Link href="/dashboard?page=searchService">
             Página Cadastrar de Projeto
