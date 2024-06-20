@@ -40,7 +40,7 @@ export const ButtonEnter = styled.button`
   line-height: 26px;  
   letter-spacing: 0cap.46;
   cursor: pointer;  
-  margin-top: 45px;
+  /* margin-bottom: 16px; */
 
   :hover {
     background-color: #e08214;
