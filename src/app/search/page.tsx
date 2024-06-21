@@ -1,13 +1,11 @@
 "use client";
 
 import { CardRegistration } from '@/components/cards/CardRegistration';
-import { Navbar } from '@/components/navbar/Navbar';
 import Link from 'next/link';
 import { information } from '../FakeDatas/FakeRegistration';
 import { PageContainer, HomeBody } from './layout';
-import { ButtonExit } from '@/components/buttons/ButtonsLayout';
 import Image from 'next/image';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import Navbar from '@/components/navbar/Navbar';
 
 
 const SearchService: React.FC = () => {
@@ -21,17 +19,8 @@ const SearchService: React.FC = () => {
               information={item} 
             />
           ))}
-        </HomeBody>
-          <ButtonExit>          
-            <Link href="/dashboard?page=searchResult" passHref> 
-              <i className='link-content'>
-                <div className='icon'>              
-                  <LogoutOutlinedIcon />
-                </div>
-                Sair do Sistema
-              </i>
-            </Link>
-          </ButtonExit>        
+        </HomeBody>                 
+                          
       </Navbar>
     </PageContainer>
   );
