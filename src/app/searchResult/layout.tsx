@@ -3,7 +3,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.section`
-   background-color: #000000CC; 
+   /* background-color: #000000;  */
    width: 100%;
    height: 100%;
    min-height: 100vh;

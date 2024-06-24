@@ -1,13 +1,13 @@
 "use client";
 
 import { CardListProjects } from '@/components/cards/CardListProjects';
-import { Navbar } from '@/components/navbar/Navbar';
 import Link from 'next/link';
 import { information03 } from '../FakeDatas/FakeList';
 import { PageContainer, HomeBody } from './layout';
 import React from 'react';
 import { ButtonExit } from '@/components/buttons/ButtonsLayout';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import Navbar from '@/components/navbar/Navbar';
 
 const SearchResultList: React.FC = () => {
   return (

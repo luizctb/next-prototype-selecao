@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Navbar from '@/components/navbar/Navbar';
 
 
+
 const SearchService: React.FC = () => {
   return (
     <PageContainer>
@@ -19,7 +20,7 @@ const SearchService: React.FC = () => {
               information={item} 
             />
           ))}
-        </HomeBody>                 
+        </HomeBody>                
                           
       </Navbar>
     </PageContainer>

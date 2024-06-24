@@ -10,6 +10,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Navbar from '@/components/navbar/Navbar';
 
 
+
 const SearchResult: React.FC = () => {
   return (
     <PageContainer>
