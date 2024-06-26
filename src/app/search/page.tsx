@@ -1,29 +1,30 @@
 "use client";
 
 import { CardRegistration } from '@/components/cards/CardRegistration';
-import { Navbar } from '@/components/navbar/Navbar';
 import Link from 'next/link';
 import { information } from '../FakeDatas/FakeRegistration';
 import { PageContainer, HomeBody } from './layout';
+import Image from 'next/image';
+import Navbar from '@/components/navbar/Navbar';
 
 
-export default function SearchService() {
+
+const SearchService: React.FC = () => {
   return (
     <PageContainer>
-      <Navbar />
-      <HomeBody>
-        {information.map((item: any, index: number) => (
-          <CardRegistration 
-            key={index}
-            information={item} 
-          />
-        ))}
-      </HomeBody>
-      <div>        
-        <Link href="/dashboard?page=searchResult">
-         Página resultado
-        </Link>
-      </div>
+      <Navbar >     
+        <HomeBody>
+          {information.map((item: any, index: number) => (
+            <CardRegistration 
+              key={index}
+              information={item} 
+            />
+          ))}
+        </HomeBody>                
+                          
+      </Navbar>
     </PageContainer>
   );
 }
+
+export default SearchService;
