@@ -103,20 +103,5 @@ export const StyledSelect = styled(Select)`
   }
 `;
 
-export const StyledMenuItem = styled(MenuItem)`
-  background-color: #fbfbfb;
 
-&:hover {
-  background-color: #717171;
-}
-
-&.Mui-selected {
-  background-color: #717171;
-  color: #ffffff;
-}
-
-&.Mui-selected:hover {
-  background-color: #5C5C5C;
-}
-`;
 
