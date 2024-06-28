@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Box, Grid, Divider, SelectChangeEvent } from '@mui/material';
+import { Box, Grid, Divider } from '@mui/material';
 import { CustomTextField, CustomTypography, CustomFormControl, StyledInputLabel, StyledSelect, Form } from './ProjectFormLayout';
 
 export interface ProjectFormProps {
@@ -16,9 +16,7 @@ export interface ProjectFormProps {
     responsibleName: string;
     responsiblePosition: string;
     responsiblePhone: string;
-    responsibleEmail: string;
-    area?: string[];
-    subArea?: string[];
+    responsibleEmail: string;    
   };
   onSubmit?: (data: {
     name: string;
@@ -31,9 +29,7 @@ export interface ProjectFormProps {
     responsibleName: string;
     responsiblePosition: string;
     responsiblePhone: string;
-    responsibleEmail: string;
-    area?: string[];
-    subArea?: string[];
+    responsibleEmail: string;    
   }) => void;
 }
 
@@ -57,12 +53,6 @@ const sectors = [
 ];
   
 
-// const areasWithSubAreas: Record<string, string[]> = {
-//   'Agrícola': ['Soja', 'Milho', 'Café'],
-//   'Pecuária': ['Criação de bovino', 'Criação de suíno', 'Criação de ovino'],
-//   'Florestal': ['Garimpo', 'Extrativismo', 'Mineração'],
-// };
-
 const ProjectForm: React.FC<ProjectFormProps> = ({ initialData = {}, onSubmit }) => {
   const [name, setName] = useState(initialData.name || '');
   const [companyName, setCompanyName] = useState(initialData.companyName || '');
@@ -75,14 +65,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData = {}, onSubmit })
   const [responsiblePosition, setResponsiblePosition] = useState(initialData.responsiblePosition || '');
   const [responsiblePhone, setResponsiblePhone] = useState(initialData.responsiblePhone || '');
   const [responsibleEmail, setResponsibleEmail] = useState(initialData.responsibleEmail || '');
-  const [subArea, setSubArea] = useState<string[]>(initialData.subArea || []);
-
-
-  const handleSubAreaChange = (event: SelectChangeEvent<unknown>) => {
-   const selectedSubAreas = event.target.value as string[];
-   setSubArea(selectedSubAreas);
-   };
-
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,24 +80,13 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData = {}, onSubmit })
       responsibleName,
       responsiblePosition,
       responsiblePhone,
-      responsibleEmail,
-      subArea,
+      responsibleEmail,      
     };
     if (onSubmit) {
       onSubmit(data);
     }
   };
-
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
+  
 
   return (
     <Form onSubmit={handleSubmit}>
