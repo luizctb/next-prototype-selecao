@@ -2,73 +2,70 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { 
-  Box,     
-  Drawer,    
-  IconButton,   
-  InputAdornment,   
-  Paper,  
-  Checkbox,
-  FormControlLabel,
-  Typography,  
+import {
+  Box,
+  Drawer,
+  IconButton,
+  InputAdornment,
+  Typography,
   Grid,
-  Button
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText
 } from "@mui/material";
-import { 
-  CustomHomeIcon, 
-  CustomMenuIcon, 
-  CustomTextField, 
-  MenuDrawer, 
-  CustomSearchOutlined, 
-  GridColumn,  
-  ButtonExit,  
+import {
+  CustomHomeIcon,
+  CustomMenuIcon,
+  CustomTextField,
+  MenuDrawer,
+  CustomSearchOutlined,
+  GridColumn,
+  ButtonExit,
   ContainerTabs,
-  CustomTabs, 
-  CustomTab,  
-  CustomItemText,
+  CustomTabs,
+  CustomTab,
   CustomInformFragment,
-  CustomRankingBox,
   StyleBoxText,
   RankingText,
   SubtitleText,
   TitleText,
-  CageContainer,
-  CustomBoxTab,
   StyledFormControlLabel,
   StyledCheckbox,
+  CageContainer,
+  CustomBoxTab,
   CustomPaper,
-  GradientBox,
   InternalPaper
 } from "./ProjectDrawerStyles";
-import { ButtonRegister } from "../buttons/ButtonsLayout";
 import LogoutIcon from '@mui/icons-material/Logout';
-
-export interface DrawerProps {
-  imagePath: string;
-}
+import { ButtonRegister } from "../buttons/ButtonsLayout";
 
 export interface FragmentsProps {
   ranking: string;
   title: string;
   text: string;
   adress: string;
+  id: string;
 }
 
-
 const creationItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Fragmento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua um, bairro dois' },
-  { ranking: '002', title: 'Fragmento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua vinte e um, bairro três' },
+  { ranking: '001', title: 'Fragmento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua um, bairro dois', id: 'unique_id-1' },
+  { ranking: '002', title: 'Fragmento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua vinte e um, bairro três', id: 'unique_id-2' },
 ];
 
 const monitoringItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Monitoramento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua quatro, bairro dois' },
-  { ranking: '002', title: 'Monitoramento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua sete, bairro oito' },
+  { ranking: '001', title: 'Monitoramento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua quatro, bairro dois', id: 'unique_id-3' },
+  { ranking: '002', title: 'Monitoramento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua sete, bairro oito', id: 'unique_id-4' },
 ];
 
 const newPopulationItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Nova População abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua cinco, bairro dois' },
-  { ranking: '002', title: 'Nova População bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua nove, bairro dois' },
+  { ranking: '001', title: 'Nova População abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua cinco, bairro dois', id: 'unique_id-5' },
+  { ranking: '002', title: 'Nova População bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua nove, bairro dois', id: 'unique_id-6' },
 ];
+
+export interface DrawerProps {
+  imagePath?: string;
+}
 
 export interface TabPanelProps {
   children?: React.ReactNode;
@@ -77,7 +74,7 @@ export interface TabPanelProps {
 }
 
 function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, index, value, ...other } = props;
 
   return (
     <div
@@ -116,8 +113,7 @@ const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.pn
     Array(monitoringItems.length).fill(false),
     Array(newPopulationItems.length).fill(false),
   ]);
-  const [value, setValue] = React.useState(0);
-
+  const [value, setValue] = useState(0);
 
   const handleParentChange = (tabIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
@@ -145,24 +141,23 @@ const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.pn
         }
       />
       {items.map((item, index) => (
-        <CustomInformFragment key={index} >
+        <CustomInformFragment key={item.id} >
           <StyledFormControlLabel
-            control={<StyledCheckbox checked={checkedItems[tabIndex][index]} onChange={handleChildChange(tabIndex, index)} />}
-            label={  
+            control={<StyledCheckbox
+              checked={checkedItems[tabIndex][index]}
+              onChange={handleChildChange(tabIndex, index)} />}
+            label={
               <StyleBoxText>
-
                 <div>
-                <RankingText variant="body1">{`${index + 1}`}</RankingText>
+                  <RankingText variant="body1">{`${index + 1}`}</RankingText>
                 </div>
                 <div>
                   <TitleText variant="subtitle1">{item.title}</TitleText>
-
                   <SubtitleText variant="body2">
                     <TextLimit text={item.text} limit={48} />
                   </SubtitleText>
-                  </div>
+                </div>
               </StyleBoxText>
-            
             }
           />
         </CustomInformFragment>
@@ -174,15 +169,20 @@ const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.pn
     setValue(newValue);
   };
 
+  const [openReportDialog, setOpenReportDialog] = useState(false);
+
   const handleGenerateReport = () => {
-    const reportData = {
+    const _reportData = {
       creationItems,
       monitoringItems,
       newPopulationItems,
     };
-    alert(`Relatório gerado com os seguintes dados: ${JSON.stringify(reportData, null, 2)}`);
+    setOpenReportDialog(true);
   };
 
+  const handleCloseReportDialog = () => {
+    setOpenReportDialog(false);
+  };
 
   return (
     <Box>
@@ -191,61 +191,55 @@ const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.pn
         edge="start"
         color="inherit"
         aria-label="logo"
-        onClick={() => setIsDrawerOpen(true)}
+        onClick={() => { setIsDrawerOpen(true); }}
       >
         <CustomMenuIcon />
       </MenuDrawer>
-
       <Grid>
-        <Drawer anchor="left" open={isDrawerOpen}>   
-         
-          <GridColumn>           
+        <Drawer anchor="left" open={isDrawerOpen}>
+          <GridColumn>
             <IconButton
               size="large"
               edge="start"
               color="inherit"
               aria-label="logo"
-              onClick={() => setIsDrawerOpen(false)}
+              onClick={() => { setIsDrawerOpen(false); }}
             >
               <CustomMenuIcon />
             </IconButton>
             <CustomHomeIcon />
             {imagePath ? <Image alt="logoName" height={40.66} src={imagePath} width={144} /> : null}
-          </GridColumn>    
-        
+          </GridColumn>
           <GridColumn>
             <CustomTextField
               label="Buscar endereço"
-              name="street"                      
+              name="street"
               fullWidth
               margin="normal"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomSearchOutlined onClick={() => {}} />
+                    <CustomSearchOutlined onClick={() => { console.log('Search button clicked'); }} />
                   </InputAdornment>
                 ),
               }}
             />
-          </GridColumn>          
-          
-        
+          </GridColumn>
           <CageContainer>
             <Grid>
-            <CustomBoxTab sx={{ width: '100%' }}>
-              <CustomTabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <CustomTab label="Criação" {...a11yProps(0)} />
-                <CustomTab label="Monitoramento" {...a11yProps(1)} />
-                <CustomTab label="Novas populações" {...a11yProps(2)} />            
-              </CustomTabs>          
-            </CustomBoxTab> 
+              <CustomBoxTab sx={{ width: '100%' }}>
+                <CustomTabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                  <CustomTab label="Criação" {...a11yProps(0)} />
+                  <CustomTab label="Monitoramento" {...a11yProps(1)} />
+                  <CustomTab label="Novas populações" {...a11yProps(2)} />
+                </CustomTabs>
+              </CustomBoxTab>
             </Grid>
             <Grid>
-
-              <ContainerTabs>          
+              <ContainerTabs>
                 <CustomTabPanel value={value} index={0}>
-                  {renderItems(creationItems, 0)}            
-                </CustomTabPanel>          
+                  {renderItems(creationItems, 0)}
+                </CustomTabPanel>
                 <CustomTabPanel value={value} index={1}>
                   {renderItems(monitoringItems, 1)}
                 </CustomTabPanel>
@@ -254,25 +248,35 @@ const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.pn
                 </CustomTabPanel>
               </ContainerTabs>
             </Grid>
-          </CageContainer>  
-            
-            
-        
-        <CustomPaper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-          <InternalPaper sx={{ pb: 3 }}>            
-          <ButtonExit variant="outlined" startIcon={<LogoutIcon />}>
-          Sair do Sistema
-          </ButtonExit>
-           
-            <ButtonRegister onClick={handleGenerateReport}>
-              GERAR RELATÓRIO DE AÇÃO
-            </ButtonRegister>
-            
-          </InternalPaper>
-        </CustomPaper>    
-        
-      </Drawer>
+          </CageContainer>
+          <CustomPaper
+            sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+            elevation={3}
+          >
+            <InternalPaper
+              sx={{ pb: 3 }}
+            >
+              <ButtonExit
+                variant="outlined"
+                startIcon={<LogoutIcon />}
+              >
+                Sair do Sistema
+              </ButtonExit>
+              <ButtonRegister onClick={handleGenerateReport}>
+                GERAR RELATÓRIO DE AÇÃO
+              </ButtonRegister>
+            </InternalPaper>
+          </CustomPaper>
+        </Drawer>
       </Grid>
+      <Dialog open={openReportDialog} onClose={handleCloseReportDialog}>
+        <DialogTitle>Relatório de Fragmentos</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {/* Adicionar o report do relatório após integração API */}
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };
