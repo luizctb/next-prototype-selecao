@@ -1,31 +1,33 @@
 "use client"
 
 import Image from 'next/image';
-import { CardContainer, CardBody } from './CardLayout';
+import { Box, CardContainer, CardData, CardTitle } from './CardLayout';
 import { TextLimit } from '../TextLimit/TextLimit';
+import { ButtonEnter } from '../buttons/ButtonsLayout';
 
 
 export interface CardInformation02 {
    image: string;
    title: string;
-   text: string;
-   text1: string;
+   text: string;   
    limit?: number; 
 }
 export function CardNewProject({information02}: {information02: CardInformation02}) {   
    console.log(information02);
-
    return (
-      <CardContainer>
-         <div>
-            <Image src={information02.image} alt="Imagem" width={500} height={500} />
-
-            <CardBody>
-               <h1>{information02.title}</h1>
-               <TextLimit text={information02.text} limit={50}/>   
-               <span>{information02.text1}</span>  
-            </CardBody>   
-         </div>
-      </CardContainer>
+      <Box>         
+         <Image src={information02.image} alt="Imagem" width={493} height={194} 
+         />
+            <CardContainer>
+               <CardTitle>
+                  <h1>{information02.title}</h1>
+               </CardTitle>
+               <CardData>
+                  <TextLimit text={information02.text} limit={125}/>   
+               </CardData>             
+            </CardContainer>
+         <ButtonEnter>ENTRAR</ButtonEnter>   
+         
+      </Box>
    );  
 }
