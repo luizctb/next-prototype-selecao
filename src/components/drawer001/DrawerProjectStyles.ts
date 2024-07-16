@@ -13,7 +13,8 @@ import {
   Checkbox as MuiCheckbox, 
   ListItemText as MuiListItemText, 
   IconButton,
-  FormControlLabel
+  FormControlLabel,
+  Button
 } from "@mui/material";
 
 
@@ -135,7 +136,7 @@ export const CustomTextField = styled(TextField)`
 `;
 
 export const CustomBottomNavigationAction = styled(BottomNavigationAction)`
-  max-width: 132px;   
+  max-width: 114px;   
   height: 38px;  
   border-radius: 8px 8px 0px 0px !important;
   background-color: #864e0c !important;
@@ -246,5 +247,53 @@ export const StyledListItemText = styled(MuiListItemText)`
     'Helvetica Neue',
     sans-serif;
   line-height: 19.2px;  
+`;
+
+
+export const ButtonExit = styled(Button)`
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  max-width: 162px;
+  height: 40px;
+  padding: 0px, 8px;  
+  background-color: transparent;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;  
+  letter-spacing: 0.15;
+  cursor: pointer;  
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  .link-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .icon {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+  }
+  
+  :hover {
+    background-color: #0000CC;    
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; 
+    margin-bottom: 10px;
+  }
 `;
   
