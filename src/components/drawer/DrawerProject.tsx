@@ -40,29 +40,6 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ButtonRegister } from "../buttons/ButtonsLayout";
 
-export interface FragmentsProps {
-  ranking: string;
-  title: string;
-  text: string;
-  adress: string;
-  id: string;
-}
-
-const creationItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Fragmento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua um, bairro dois', id: 'unique_id-1' },
-  { ranking: '002', title: 'Fragmento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua vinte e um, bairro três', id: 'unique_id-2' },
-];
-
-const monitoringItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Monitoramento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua quatro, bairro dois', id: 'unique_id-3' },
-  { ranking: '002', title: 'Monitoramento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua sete, bairro oito', id: 'unique_id-4' },
-];
-
-const newPopulationItems: readonly FragmentsProps[] = [
-  { ranking: '001', title: 'Nova População abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua cinco, bairro dois', id: 'unique_id-5' },
-  { ranking: '002', title: 'Nova População bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", adress: 'rua nove, bairro dois', id: 'unique_id-6' },
-];
-
 export interface DrawerProps {
   imagePath?: string;
 }
@@ -73,27 +50,12 @@ export interface TabPanelProps {
   value: number;
 }
 
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, index, value, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
+export interface FragmentsProps {
+  ranking: string;
+  title: string;
+  text: string;
+  address: string;
+  id: string;
 }
 
 export interface TextLimitProps {
@@ -101,10 +63,43 @@ export interface TextLimitProps {
   limit: number;
 }
 
+const creationItems: readonly FragmentsProps[] = [
+  { ranking: '001', title: 'Fragmento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua um, bairro dois', id: 'unique_id-1' },
+  { ranking: '002', title: 'Fragmento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua vinte e um, bairro três', id: 'unique_id-2' },
+];
+
+const monitoringItems: readonly FragmentsProps[] = [
+  { ranking: '001', title: 'Monitoramento abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua quatro, bairro dois', id: 'unique_id-3' },
+  { ranking: '002', title: 'Monitoramento bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua sete, bairro oito', id: 'unique_id-4' },
+];
+
+const newPopulationItems: readonly FragmentsProps[] = [
+  { ranking: '001', title: 'Nova População abc', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua cinco, bairro dois', id: 'unique_id-5' },
+  { ranking: '002', title: 'Nova População bcd', text: "Bioma X, ocorrência de espécies de animais mamíferos", address: 'rua nove, bairro dois', id: 'unique_id-6' },
+];
+
 const TextLimit: React.FC<TextLimitProps> = ({ text, limit }) => {
   const textLimited = text.length > limit ? `${text.substring(0, limit)}...` : text;
   return <Typography variant="body2">{textLimited}</Typography>;
 };
+
+const CustomTabPanel: React.FC<TabPanelProps> = ({ children, index, value, ...other }) => (
+  <div
+    role="tabpanel"
+    hidden={value !== index}
+    id={`simple-tabpanel-${index}`}
+    aria-labelledby={`simple-tab-${index}`}
+    {...other}
+  >
+    {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
+  </div>
+);
+
+const a11yProps = (index: number) => ({
+  id: `simple-tab-${index}`,
+  'aria-controls': `simple-tabpanel-${index}`,
+});
+
 
 const DrawerProject: React.FC<DrawerProps> = ({ imagePath = '/images/logoName.png' }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
